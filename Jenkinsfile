@@ -11,7 +11,7 @@ pipeline {
                     branches: [[name: '*/main']],
                     userRemoteConfigs: [[
                         url: 'https://github.com/shan376/new3rdj.git',
-                        credentialsId: '15f23b05-1a56-496c-b8a1-3022db08a6a6'
+                        credentialsId: 'ansible_key'
                     ]]
                 ])
             }
