@@ -1,0 +1,27 @@
+- name: Deploy App using Docker
+  hosts: web
+  become: true
+  tasks:
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+        update_cache: true
+
+    - name: Clone App Repo
+      git:
+        repo: https://github.com/shan376/new3rdj.git
+        dest: /home/ubuntu/app
+        force: yes
+
+    - name: Build Docker Image
+      command: docker build -t myapp:latest .
+      args:
+        chdir: /home/ubuntu/app
+
+    - name: Stop Running Container (if any)
+      command: docker stop myapp
+      ignore_errors: yes
+
+    - name: Run Docker Container
+      command: docker run -d -p 3000:3000 --name myapp myapp:latest

@@ -1,0 +1,8 @@
+.ssh/
+*.pem
+.cache/
+*.log
+*.swp
+.bash*
+profile
+sudo_as_admin_successful
